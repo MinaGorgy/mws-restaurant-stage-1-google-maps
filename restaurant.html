@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <!-- Normalize.css for better cross-browser consistency -->
@@ -7,42 +7,47 @@
   <!-- Main CSS file -->
   <link rel="stylesheet" href="css/styles.css" type="text/css">
   <title>Restaurant Info</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
 </head>
 
 <body class="inside">
   <!-- Beginning header -->
   <header>
     <!-- Beginning nav -->
-    <nav>
+    <nav id="nav1">
       <h1><a href="/">Restaurant Reviews</a></h1>
     </nav>
+    
     <!-- Beginning breadcrumb -->
-    <ul id="breadcrumb" >
-      <li><a href="/">Home</a></li>
-    </ul>
+    <nav  aria-label="Breadcrumb" role="navigation">
+      <ul id="breadcrumb" >
+        <li><a aria-level="1" href="/">Home</a></li>
+      </ul>
+    </nav>
     <!-- End breadcrumb -->
     <!-- End nav -->
   </header>
   <!-- End header -->
 
   <!-- Beginning main -->
-  <main id="maincontent">
+  <main role="main" id="maincontent">
     <!-- Beginning map -->
     <section id="map-container">
-      <div id="map"></div>
+      <div role="application" id="map"></div>
     </section>
     <!-- End map -->
     <!-- Beginning restaurant -->
     <section id="restaurant-container">
-      <h1 id="restaurant-name"></h1>
-      <img id="restaurant-img">
-      <p id="restaurant-cuisine"></p>
-      <p id="restaurant-address"></p>
-      <table id="restaurant-hours"></table>
+      <h2 tabindex="0" id="restaurant-name"></h2>
+      <img tabindex="0" id="restaurant-img">
+      <p tabindex="0" id="restaurant-cuisine"></p>
+      <p tabindex="0" id="restaurant-address"></p>
+      <table align="center" tabindex="0" id="restaurant-hours"></table>
     </section>
     <!-- end restaurant -->
     <!-- Beginning reviews -->
-    <section id="reviews-container">
+    <section  id="reviews-container">
       <ul id="reviews-list"></ul>
     </section>
     <!-- End reviews -->
@@ -54,7 +59,14 @@
     Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
   </footer>
   <!-- End footer -->
-
+  <script>
+    if('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('sw.js')
+          .then(function() {
+                console.log('Registered');
+          });
+      }
+  </script>
   <!-- Beginning scripts -->
   <!-- Database helpers -->
   <script type="text/javascript" src="js/dbhelper.js"></script>
